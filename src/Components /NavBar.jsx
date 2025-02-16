@@ -9,7 +9,6 @@ const NavBar = ({ setKey }) => {
 
   return (
     <nav style={{ backgroundColor: "black", padding: "20px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-      {/* Centering "Movie Bluff" */}
       <div style={{ flex: 1, textAlign: "center" }}>
         <Link
           to="/Home"

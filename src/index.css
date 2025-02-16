@@ -14,8 +14,4 @@ code {
     monospace;
 }
 
-img:hover {
-  transform: scale(2.2);
-  transition: transform 0.2s ease-in-out;
-}
 

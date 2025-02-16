@@ -105,41 +105,43 @@ function App() {
                   {error}
                 </p>
               )}
-
-              {/* Display number of results for the current search term */}
               {searchTerm && movies && movies.length > 0 && (
                 <p
                   style={{
                     padding: "10px",
                     textAlign: "center",
                     fontFamily: "Roboto, sans-serif",
-                    color: "black",
+                    color: "black",   
                   }}
                 >
-                  {`Number of results for "${searchTerm}": ${movies.length}`}
+                  {`Number of results for ${searchTerm}: ${movies.length}`}
                 </p>
               )}
 
               {movies && (
-                <div
+                <div className="movie-wrapper"
                   style={{
-                    backgroundColor: "smoke white",
+                    backgroundColor: "white",
                     marginInlineEnd: "20px",
                     marginLeft: "20px",
                     display: "grid",
                     gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
                     gap: "50px",
+                    paddingBottom: "100px",
                   }}
                 >
                   {movies.map((movie) => (
                     <div
-                      key={movie.imdbID}
-                      style={{
-                        border: "2px solid #ddd",
-                        padding: "10px",
-                        textAlign: "center",
-                      }}
-                    >
+                    key={movie.imdbID}
+                    style={{
+                      border: "2px solid #ddd",
+                      padding: "10px",
+                      textAlign: "center",
+                      transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+                    }}
+                    className="movie-card"
+                  >
+                  
                       <h2
                         style={{
                           fontSize: "20px",
@@ -173,17 +175,19 @@ function App() {
                       </p>
                       <p
                         style={{
+                          bottom: "20px",
                           padding: "10px",
                           textAlign: "center",
                         }}
                       >
                         <VscStarHalf /> {movie.imdbRating}
                       </p>
+
                       <Link to={`/plot?id=${movie.imdbID}`}>
-                        <img
+                        <img 
                           src={movie.Poster}
                           alt={movie.Title}
-                          style={{ width: "100px", height: "150px" }}
+                          style={{ bottom:"20px", width: "100px", height: "150px" }}
                         />
                       </Link>
                     </div>
@@ -191,7 +195,6 @@ function App() {
                 </div>
               )}
               <Footer />
-              <br />
             </div>
           }
         />

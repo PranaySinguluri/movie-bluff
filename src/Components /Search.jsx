@@ -47,7 +47,7 @@ function Search({ onSearch }) {
           cursor: "pointer", // Added for better UX
         }}
       >
-        Search
+      Search
       </button>
     </div>
   );
