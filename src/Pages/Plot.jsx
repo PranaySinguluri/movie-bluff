@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
+import LoadingGif from "/Users/pranaysinguluri/movie-bluff/src/assets/loadingGif.gif";
+import Footer from "../Components /Footer";
 
 const API_KEY = "30f7503d";
-const BASE_URL = "https://www.omdbapi.com/";
+const BASE_URL = "https://www.omdbapi.com/"; 
 
 const Plot = () => {
   const [plot, setPlot] = useState("");
@@ -40,23 +41,19 @@ const Plot = () => {
   }, [movieId]);
 
   return (
-    <div style={{ textAlign: "center",
-      gridArea: "content",
-      padding: "20px",
-      backgroundColor: "lightgray",
-      borderRadius: "50px",
-      boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-      margin: "20px",
-
-     }}>
+    <div className="plot">
       <h1>Movie Plot</h1>
-      {loading && <p>Loading...</p>}
+      {loading && (
+                <div style={{ textAlign: "center", marginTop: "200px" }}>
+                  <img src={LoadingGif} alt="Loading..." width="100" />
+                  <p>Fetching Plot...</p>
+                </div>
+              )}
       {error && <p style={{ color: "red" }}>{error}</p>}
       {!loading && !error && plot === "N/A" && <p>No plot at the moment.</p>}
       {!loading && !error && plot && <p>{plot}</p>}
-      <nav style={{ textAlign: "center", padding: "20px" }}>
-        <Link to="/">Home</Link> 
-      </nav>
+      <Footer />
+      <br />
     </div>
   );
 };

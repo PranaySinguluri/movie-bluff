@@ -7,15 +7,8 @@
   pointer-events: none;
 }
 
-img:hover {
-  transform: scale(1.1);
-  transition: transform 0.2s ease-in-out;
-}
-
-
-
 .App-header {
-  background-color: #282c34;
+  background-color: white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,7 +21,59 @@ img:hover {
 .App-link {
   color: #61dafb;
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
 
+.pagination button {
+  padding: 10px 15px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.plot {
+    align-items: center;
+    grid-row: 2;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(248, 248, 248, 0.1);
+    margin: 50px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  padding: 15px 0;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @keyframes App-logo-spin {
   from {
