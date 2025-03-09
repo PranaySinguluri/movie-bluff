@@ -1,5 +1,5 @@
 import React from "react";
-import Home from "/Users/pranaysinguluri/movie-bluff/src/Home.jsx";
+import Home from "./Components/Home";  // Ensure the correct path to Home.jsx
 
 const App = () => {
   return (
@@ -10,4 +10,3 @@ const App = () => {
 };
 
 export default App;
-

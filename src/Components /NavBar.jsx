@@ -8,14 +8,24 @@ const NavBar = ({ setKey }) => {
   };
 
   return (
-    <nav style={{ backgroundColor: "black", padding: "20px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-      <div style={{ flex: 1, textAlign: "center" }}>
+    <nav
+      style={{
+        backgroundColor: "black",
+        padding: "20px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
+      {/* Logo / Title */}
+      <div style={{ textAlign: "center" }}>
         <Link
-          to="/Home"
+          to="/home"
           style={{
             color: "white",
             textDecoration: "none",
-            fontSize: "24px",
+            fontSize: "20px",
+            paddingLeft: "30px",
             fontWeight: "bold",
           }}
         >
@@ -23,31 +33,42 @@ const NavBar = ({ setKey }) => {
         </Link>
       </div>
 
-      <div style={{ display: "flex", alignItems: "center" }}>
+      {/* Navigation Links */}
+      <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
         <Link
-          to="/Home"
+          to="/home"
           onClick={handleHomeReset}
           style={{
             color: "white",
             textDecoration: "none",
             display: "flex",
             alignItems: "center",
-            marginRight: "4px",
+            gap: "4px",
           }}
         >
           <VscHome size={20} /> Home
         </Link>
 
-        <span style={{ color: "white", marginRight: "40px" }}></span>
         <Link
           to="/about"
-            style={{
+          style={{
             color: "white",
             textDecoration: "none",
           }}
         >
           About
         </Link>
+
+        <Link
+          to="/login"
+          style={{
+            color: "white",
+            textDecoration: "none",
+          }}
+        >
+          Login
+        </Link>
+        <Link to="/signup" style={{ color: "white", textDecoration: "none" }}>Signup</Link>
       </div>
     </nav>
   );

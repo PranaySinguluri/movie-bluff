@@ -1,56 +1,52 @@
 import React, { useState } from "react";
+import { CiSearch } from "react-icons/ci";
 
-const searchStyle = {
-  display: "flex",
-  justifyContent: "center",
-  marginBottom: "20px"
-};
-
-function Search({ onSearch }) {
+const SearchBar = ({ onSearch }) => {
   const [query, setQuery] = useState("");
+  const [focused, setFocused] = useState(false);
 
   const handleSearch = () => {
-    if (query.trim() !== "") {
+    if (query.trim()) {
       onSearch(query);
-    }
-    if (query.trim() === "") {
-      alert("Please enter a valid movie name");
     }
   };
 
   return (
-    <div style={searchStyle}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        background: "#fff", // White background
+        borderRadius: "50px",
+        border: focused ? "2px solid #fff" : "2px solid transparent", // White focus border
+        padding: "12px 20px",
+        transition: "0.3s ease",
+        width: "80%", // 80% of screen width
+        maxWidth: "800px",
+        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.8)", // Strong black shadow
+        margin: "20px auto", // Centering the search bar
+      }}
+    >
+      <CiSearch style={{ color: "#000", fontSize: "24px", marginRight: "12px" }} />
       <input
         type="text"
-        placeholder= "search movies here..."
+        placeholder="Search movies..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        onKeyDown={(e) => e.key === "Enter" && handleSearch()} 
+        onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
         style={{
-          padding: "8px",
-          borderRadius: "60px",
-          marginBottom: "20px",
-          fontSize: "16px",
-          width: "500px",
-          fontFamily: "Roboto, sans-serif",
+          background: "transparent",
+          border: "none",
+          outline: "none",
+          color: "#000", // Black text
+          fontSize: "18px",
+          flex: "1",
         }}
       />
-      <button 
-        onClick={handleSearch} 
-        style={{
-          padding: "8px",
-          borderRadius: "60px",
-          marginBottom: "20px",
-          fontSize: "16px",
-          width: "80px",
-          fontStyle: "italic",
-          cursor: "pointer", // Added for better UX
-        }}
-      >
-      Search
-      </button>
     </div>
   );
-}
+};
 
-export default Search;
+export default SearchBar;
