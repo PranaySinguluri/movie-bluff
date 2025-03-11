@@ -4,13 +4,8 @@ import LoadingGif from "/Users/pranaysinguluri/movie-bluff/src/assets/loadingGif
 import Footer from "/Users/pranaysinguluri/movie-bluff/src/Components /Footer.jsx";
 import axios from "axios";
 
-<<<<<<< Updated upstream
-const API_KEY = "30f7503d";
-const BASE_URL = "https://www.omdbapi.com/"; 
-=======
 const BEARER_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNTE4ZjcwZDU1ZGIxMzRmMDk0OTE3ZGE5ZWZjYjczNSIsIm5iZiI6MTczNzgyOTg0MS4zODQsInN1YiI6IjY3OTUyZGQxZDRiYTE3MjVmMTJhZTFmMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.nK8RSiK_PHNzJsBd4CTpDD7weTGXKnGa8RxQjtEJckw'; // Better to store it in env variables
 const BASE_URL = "https://api.themoviedb.org/3/movie/";
->>>>>>> Stashed changes
 
 const Plot = () => {
   const [plot, setPlot] = useState("");
@@ -55,17 +50,6 @@ const Plot = () => {
     const fetchPlot = async () => {
       setLoading(true);
       try {
-<<<<<<< Updated upstream
-        const response = await fetch(`${BASE_URL}?apikey=${API_KEY}&i=${movieId}&plot=full`);
-        if (!response.ok) throw new Error("Network response was not ok");
-
-        const result = await response.json();
-        if (result.Response === "True") {
-          setPlot(result.Plot);
-        } else {
-          throw new Error(result.Error);
-        }
-=======
         const response = await axios.get(`${BASE_URL}${movieId}`, {
           headers: {
             Authorization: `Bearer ${BEARER_TOKEN}`,
@@ -76,7 +60,6 @@ const Plot = () => {
         if (response.status !== 200) throw new Error("Network response was not ok");
 
         setPlot(response.data.overview);
->>>>>>> Stashed changes
       } catch (err) {
         setError(err.message);
       } finally {
