@@ -11,15 +11,25 @@ const NavBar = ({ setKey }) => {
     <nav style={{ backgroundColor: "black", padding: "20px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
       <div style={{ flex: 1, textAlign: "center" }}>
         <Link
+<<<<<<< Updated upstream
           to="/Home"
           style={{
             color: "white",
             textDecoration: "none",
             fontSize: "24px",
+=======
+          to="/home"
+          onClick={handleHomeReset}
+          style={{
+            color: "white",
+            textDecoration: "none",
+            fontSize: "20px",
+            paddingLeft: "20px",
+>>>>>>> Stashed changes
             fontWeight: "bold",
           }}
         >
-          Movie Bluff
+        Movie Bluff
         </Link>
       </div>
 

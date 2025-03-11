@@ -19,7 +19,26 @@ function Search({ onSearch }) {
   };
 
   return (
+<<<<<<< Updated upstream
     <div style={searchStyle}>
+=======
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        background: "#fff", 
+        borderRadius: "50px",
+        border: focused ? "2px solid #fff" : "2px solid transparent", // White focus border
+        padding: "12px 20px",
+        transition: "0.3s ease",
+        width: "50%", 
+        maxWidth: "800px",
+        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.8)", // Strong black shadow
+        margin: "20px auto", // Centering the search bar
+      }}
+    >
+      <CiSearch style={{ color: "#000", fontSize: "24px", marginRight: "12px" }} />
+>>>>>>> Stashed changes
       <input
         type="text"
         placeholder= "search movies here..."

@@ -6,6 +6,61 @@
   height: 40vmin;
   pointer-events: none;
 }
+<<<<<<< Updated upstream
+=======
+.results-info {
+  margin: 20px 0;
+  font-size: 214px0px;
+  font-weight: bold;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.signup-container {
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+  background: #f8f8f8;
+  border-radius: 10px;
+}
+
+.login-container {
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+  padding: 40px;
+  background: #f8f8f8;
+  border-radius: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: #333;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+}
+>>>>>>> Stashed changes
 
 .App-header {
   background-color: white;

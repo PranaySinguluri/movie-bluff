@@ -10,12 +10,22 @@ import LoadingGif from "/Users/pranaysinguluri/movie-bluff/src/assets/loadingGif
 import ErrorPage from "/Users/pranaysinguluri/movie-bluff/src/Pages/ErrorPage.jsx";
 import { VscStarHalf } from "react-icons/vsc";
 import Footer from "/Users/pranaysinguluri/movie-bluff/src/Components /Footer.jsx";
+<<<<<<< Updated upstream
 
 const API_KEY = "30f7503d";
 function useFetch(url) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+=======
+import Login from "./Login";
+import SignUp from "/Users/pranaysinguluri/movie-bluff/src/Pages/SignUp.jsx";
+import useFetch from "/Users/pranaysinguluri/movie-bluff/src/Hooks/useFetch.jsx";
+import TrendingMovies from "../Components /Trending.jsx";
+
+
+const TMDB_BASE_URL = "https://api.themoviedb.org/3";
+>>>>>>> Stashed changes
 
   useEffect(() => {
     if (!url) return;
@@ -59,7 +69,11 @@ function useFetch(url) {
 
 function App() {
   const [url, setUrl] = useState("");
+<<<<<<< Updated upstream
   const [searchTerm, setSearchTerm] = useState(""); // Added state for search term
+=======
+  const [searchTerm, setSearchTerm] = useState("");
+>>>>>>> Stashed changes
   const { data: movies, loading, error } = useFetch(url);
 
   const handleSearch = (query) => {
@@ -93,6 +107,7 @@ function App() {
                 </div>
               )}
 
+<<<<<<< Updated upstream
               {error && (
                 <p
                   style={{
@@ -130,6 +145,22 @@ function App() {
                     paddingBottom: "100px",
                   }}
                 >
+=======
+              {error && <p className="error-message">{error}</p>}
+
+              {searchTerm && movies && (
+                <p className="results-info">
+                  {`Results for "${searchTerm}": ${movies.length}`}
+                </p>
+              )}
+
+              {/* Conditionally render TrendingMovies based on search term */}
+              {!searchTerm && <TrendingMovies />}
+
+              {/* Render searched movies if searchTerm is present */}
+              {searchTerm && movies && (
+                <div className="movie-grid">
+>>>>>>> Stashed changes
                   {movies.map((movie) => (
                     <div
                     key={movie.imdbID}
@@ -183,11 +214,19 @@ function App() {
                         <VscStarHalf /> {movie.imdbRating}
                       </p>
 
+<<<<<<< Updated upstream
                       <Link to={`/plot?id=${movie.imdbID}`}>
                         <img 
                           src={movie.Poster}
                           alt={movie.Title}
                           style={{ bottom:"20px", width: "100px", height: "150px" }}
+=======
+                      <Link to={`/overview?id=${movie.id}`}>
+                        <img
+                          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                          alt={movie.title}
+                          className="movie-poster"
+>>>>>>> Stashed changes
                         />
                       </Link>
                     </div>
@@ -198,7 +237,11 @@ function App() {
             </div>
           }
         />
+<<<<<<< Updated upstream
         <Route path="/plot" element={<Plot />} />
+=======
+        <Route path="/overview" element={<Plot />} />
+>>>>>>> Stashed changes
         <Route path="/about" element={<About />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
