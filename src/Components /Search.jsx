@@ -30,6 +30,7 @@ const SearchBar = ({ onSearch }) => {
       <CiSearch style={{ color: "#000", fontSize: "24px", marginRight: "12px" }} />
       <input
         type="text"
+        id="SearchId"
         placeholder="Search movies..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}

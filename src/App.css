@@ -7,6 +7,7 @@
   pointer-events: none;
 }
 
+
 .signup-container {
   max-width: 400px;
   margin: auto;
@@ -23,6 +24,17 @@
   padding: 40px;
   background: #f8f8f8;
   border-radius: 10px;
+}
+
+.login-username {
+  padding: auto;
+  width: auto;
+  border-radius: 5px;
+}
+.login-password{
+  padding: auto;
+  width: auto;
+  border-radius: 5px;
 }
 
 input {

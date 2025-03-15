@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useFetch from "../Hooks/useFetch"; // Correct relative path
-import '/Users/pranaysinguluri/movie-bluff/src/assets/Trending.css';  // Import the new CSS file
+import "/Users/pranaysinguluri/movie-bluff/src/assets/Trending.css"; // Import the new CSS file
 
 const API_URL = "https://api.themoviedb.org/3/trending/movie/day";
 
 function TrendingMovies() {
   const { data: movies, loading, error } = useFetch(API_URL);
-  const [hoveredMovieId, setHoveredMovieId] = useState(null); // State to track hovered movie
+  const [hoveredMovieId, setHoveredMovieId] = useState(null);
+  const navigate = useNavigate(); // ✅ Correctly use useNavigate
 
   if (loading) return <p className="trending-loading">Loading...</p>;
   if (error) return <p className="trending-error">Error: {error}</p>;
@@ -18,10 +20,11 @@ function TrendingMovies() {
       <div className="trending-movie-grid">
         {movies.map((movie) => (
           <div
-            key={movie.id}
+            key={movie.id} // ✅ Fix: Added key
             className="trending-movie-card"
-            onMouseEnter={() => setHoveredMovieId(movie.id)} // Set hover state
-            onMouseLeave={() => setHoveredMovieId(null)} // Reset hover state
+            onClick={() => navigate(`/plot?id=${movie.id}`)} // ✅ Corrected navigation logic
+            onMouseEnter={() => setHoveredMovieId(movie.id)}
+            onMouseLeave={() => setHoveredMovieId(null)}
           >
             <img
               src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
