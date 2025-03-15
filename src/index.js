@@ -1,15 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-// import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import Home from "./Pages/Home";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")); // ✅ Fix for React 18
+
 root.render(
   <React.StrictMode>
-    <Home />
+    <BrowserRouter future={{v7_relativeSplatPath: true,
+  }}
+>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
-
-reportWebVitals();

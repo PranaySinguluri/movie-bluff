@@ -1,25 +1,24 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Link } from "react-router-dom";
-import Search from "/Users/pranaysinguluri/movie-bluff/src/Components /Search.jsx";
-import Plot from "/Users/pranaysinguluri/movie-bluff/src/Pages/Plot.jsx";
-import About from "/Users/pranaysinguluri/movie-bluff/src/Pages/About.jsx";
-import NavBar from "/Users/pranaysinguluri/movie-bluff/src/Components /NavBar.jsx";
-import LoadingGif from "/Users/pranaysinguluri/movie-bluff/src/assets/loadingGif.gif"; 
-import ErrorPage from "/Users/pranaysinguluri/movie-bluff/src/Pages/ErrorPage.jsx";
+import { Routes, Route, Link } from "react-router-dom";
+import Search from "../Components /Search.jsx";
+import Plot from "../Pages/Plot.jsx";
+import About from "../Pages/About.jsx";
+import NavBar from "../Components /NavBar.jsx";
+import LoadingGif from "../assets/loadingGif.gif";
+import ErrorPage from "../Pages/ErrorPage.jsx";
 import { VscStarHalf } from "react-icons/vsc";
-import Footer from "/Users/pranaysinguluri/movie-bluff/src/Components /Footer.jsx";
+import Footer from "../Components /Footer.jsx";
 import Login from "./Login";
-import SignUp from "/Users/pranaysinguluri/movie-bluff/src/Pages/SignUp.jsx";
+import SignUp from "../Pages/SignUp.jsx";
 import Upcoming from "../Components /Trending.jsx";
-import useFetch from "/Users/pranaysinguluri/movie-bluff/src/Hooks/useFetch.jsx";
+import useFetch from "../Hooks/useFetch.jsx";
 import TrendingMovies from "../Components /Trending.jsx";
 
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
 
 function Home() {
   const [url, setUrl] = useState("");
-  const [searchTerm, setSearchTerm] = useState(""); 
+  const [searchTerm, setSearchTerm] = useState("");
   const { data: movies, loading, error } = useFetch(url);
 
   const handleSearch = (query) => {
@@ -28,14 +27,13 @@ function Home() {
   };
 
   return (
-    <Router>
+    <>
       <NavBar />
       <Routes>
         <Route
           path="/home"
           element={
             <div className="wrapper-search">
-              <h1 className="search-title"> </h1>
               <Search onSearch={handleSearch} />
 
               {loading && (
@@ -44,19 +42,18 @@ function Home() {
                 </div>
               )}
 
-              {error && (
-                <p className="error-message">{error}</p>
-              )}
+              {error && <p className="error-message">{error}</p>}
 
-              {searchTerm && movies && (
+              {searchTerm && movies && movies.length > 0 && (
                 <p className="results-info">
                   {`Results for "${searchTerm}": ${movies.length}`}
                 </p>
               )}
 
-              <Upcoming />
+              {/* ✅ Show Upcoming Only If No Search Results Exist */}
+              {!searchTerm || (movies && movies.length === 0) ? <Upcoming /> : null}
 
-              {movies && (
+              {movies && movies.length > 0 && (
                 <div className="movie-grid">
                   {movies.map((movie) => (
                     <div key={movie.id} className="movie-card">
@@ -68,9 +65,9 @@ function Home() {
                       </p>
 
                       <Link to={`/overview?id=${movie.id}`}>
-                        <img 
-                          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} 
-                          alt={movie.title} 
+                        <img
+                          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                          alt={movie.title}
                           className="movie-poster"
                         />
                       </Link>
@@ -89,7 +86,7 @@ function Home() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
-    </Router>
+    </>
   );
 }
 
