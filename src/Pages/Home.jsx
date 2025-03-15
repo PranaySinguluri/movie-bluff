@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import Search from "../Components /Search.jsx";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
+import Search from "../Components /SearchBar.jsx";
 import Plot from "../Pages/Plot.jsx";
 import About from "../Pages/About.jsx";
 import NavBar from "../Components /NavBar.jsx";
@@ -13,6 +13,7 @@ import SignUp from "../Pages/SignUp.jsx";
 import Upcoming from "../Components /Trending.jsx";
 import useFetch from "../Hooks/useFetch.jsx";
 import TrendingMovies from "../Components /Trending.jsx";
+import Welcome from "./Welcome.jsx";
 
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
 
@@ -20,6 +21,9 @@ function Home() {
   const [url, setUrl] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const { data: movies, loading, error } = useFetch(url);
+
+  const location = useLocation();
+  const userName = location.state?.username;
 
   const handleSearch = (query) => {
     setSearchTerm(query);
@@ -29,6 +33,7 @@ function Home() {
   return (
     <>
       <NavBar />
+      welcome to Movie Bluff {userName}
       <Routes>
         <Route
           path="/home"
@@ -50,8 +55,8 @@ function Home() {
                 </p>
               )}
 
-              {/* ✅ Show Upcoming Only If No Search Results Exist */}
-              {!searchTerm || (movies && movies.length === 0) ? <Upcoming /> : null}
+              {!searchTerm || (movies && movies.length === 0) ? <Upcoming /> : null} 
+              {/* shows upcoming  */}
 
               {movies && movies.length > 0 && (
                 <div className="movie-grid">
@@ -64,7 +69,7 @@ function Home() {
                         <VscStarHalf /> {movie.vote_average.toFixed(1)}
                       </p>
 
-                      <Link to={`/overview?id=${movie.id}`}>
+                      <Link to={`/plot?id=${movie.id}`}>
                         <img
                           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                           alt={movie.title}
@@ -79,7 +84,8 @@ function Home() {
             </div>
           }
         />
-        <Route path="/overview" element={<Plot />} />
+        <Route path="/plot" element={<Plot />} />
+        <Route path="/welcome" element={<Welcome/>} />
         <Route path="/trending" element={<TrendingMovies />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />

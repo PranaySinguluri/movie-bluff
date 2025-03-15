@@ -1,15 +1,17 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import Home from "./Home";
 
 const Welcome = () => {
-  const location = useLocation(); // Get the location object
-  const userName = location.state?.username || "Guest"; // Default to "Guest" if no name is passed
-
+  const location = useLocation();
+  const username = location.state?.username || "Guest";
+  const time = new Date();
+  console.log(time.toLocaleTimeString()); // Logs the current time in HH:MM:SS format
+      
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Welcome to Movie Bluff, {userName}!</h1>
-      <Home />
+      <h1>Welcome to Movie Bluff, {username}!</h1>
+      
+      <search/>
     </div>
   );
 };
