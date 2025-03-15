@@ -20,7 +20,7 @@ const Plot = () => {
 
     const fetchPlot = async () => {
       try {
-        const response = await fetch(`${BASE_URL}${movieId}`, {  // ✅ Append movieId
+        const response = await fetch(`${BASE_URL}${movieId}`, {  
           method: "GET",
           headers: {
             "Authorization": `Bearer ${BEARER_TOKEN}`,

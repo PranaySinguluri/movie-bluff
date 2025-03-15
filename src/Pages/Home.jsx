@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
-import Search from "../Components /Search.jsx";
+import Search from "../Components /SearchBar.jsx";
 import Plot from "../Pages/Plot.jsx";
 import About from "../Pages/About.jsx";
 import NavBar from "../Components /NavBar.jsx";

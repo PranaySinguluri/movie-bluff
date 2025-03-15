@@ -189,6 +189,16 @@ button:hover {
   margin-right: 5px;
 }
 
+.results-info {
+  display: flex;
+  justify-content: center;
+  align-items: right;
+  width: 100%;
+  height: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+}
 
 .movie-card {
   cursor: pointer;
