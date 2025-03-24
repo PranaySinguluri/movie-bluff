@@ -1,68 +1,66 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import useAuth from "/Users/pranaysinguluri/movie-bluff/src/Hooks/UseAuth.jsx";
+import NavBar from "Components/NavBar";
+import {Link} from "react-router-dom"
 
-const Signup = () => {
-  const [username, setUsername] = useState("");
+
+const SignUp = () => {
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const { signup, loading } = useAuth();
+  
 
-  const handleSignup = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
-    // ✅ Basic Validation
-    if (!username || !email || !password) {
-      setError("All fields are required!");
-      return;
+    try {
+      await signup(email, username, password);
+    } catch (err) {
+      setError(err.message);
     }
-
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters!");
-      return;
-    }
-
-    // ✅ Store in localStorage (Mock Backend)
-    localStorage.setItem("username", username);
-    localStorage.setItem("email", email);
-    localStorage.setItem("password", password);
-
-    alert("Signup successful! Redirecting to login...");
-    navigate("/login");
   };
 
   return (
-    <div className="signup-container">
-      <h1>Signup</h1>
-      {error && <p className="error-message">{error}</p>}
-
-      <form onSubmit={handleSignup}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
+    <div>
+      <NavBar/>
+      <form className="signup-container" onSubmit={handleSubmit}>
+      <h2>Sign Up</h2>
+        <input 
+        id="userEmail"
           type="email"
-          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+          required
+        />
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
+          required
         />
         <input
           type="password"
-          placeholder="Password (min 6 chars)"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          required
         />
-        <button type="submit">Signup</button>
-      </form>
-
-      <p>
-        Already have an account? <a href="/login">Login</a>
+        <button type="submit" disabled={loading}>
+          {loading ? "Signing Up..." : "Sign Up"}
+        </button>
+        <p>
+          Already have an account?{" "}
+        <Link to="/login">Login here</Link>
       </p>
+      </form>
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 };
 
-export default Signup;
+export default SignUp;

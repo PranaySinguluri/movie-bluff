@@ -1,10 +1,12 @@
 import React from "react";
 import { VscTwitter } from "react-icons/vsc";
-import Footer from "../Components /Footer";
+import Footer from "../Components/Footer";
+import NavBar from "Components/NavBar";
 
 const About = () => {
   return (
     <div style={{ textAlign: "center", paddingBottom: "80px" }}>
+      <NavBar />
       <p>This is a movie search app where you can find movie details and plots.</p>
       <p>Version: 1.0.0</p>
         <p 

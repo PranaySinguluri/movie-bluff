@@ -1,68 +1,61 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { CookiesProvider, useCookies } from "react-cookie";
-
-const loginStyle = {
-  padding: "10px",
-  width: "250px",
-  borderRadius: "5px"
-};
+// src/pages/Login.jsx
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ Corrected import
+import useAuth from "/Users/pranaysinguluri/movie-bluff/src/Hooks/UseAuth.jsx"; // ✅ Fixed import path
+import NavBar from "../Components/NavBar"; // ✅ Fixed import path
+import { Link } from "react-router-dom"; // ✅ Corrected import for Link
+import Footer from "Components/Footer";
 
 
 const Login = () => {
-  const [, setCookie] = useCookies(["user"]);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(""); 
+  const [error, setError] = useState("");
+  const { login, loading } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
-    if (!username || !password) {
-      setError("Please fill out both fields");
-      return;
+    try {
+      await login(username, password);
+      navigate("/home");
+    } catch (err) {
+      setError(err.message);
     }
-
-    setCookie("user", username, { path: "3000/", maxAge: 60 });
-
-    // Navigate to the Welcome page with state
-    navigate("/home", { state: { username } });
   };
 
+
   return (
-    <CookiesProvider>
-      <div className="login-container" style={{ marginTop: "100px", textAlign: "center" }}>
-        <h1>Login</h1>
-        {error && <p className="error-message" style={{ color: "red" }}>{error}</p>}
-        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "10px", alignItems: "center" }}>
-          <input className="login-username"
-            type="text"  
-            userid="userId"        
-            name="username" 
-            autoComplete="true" 
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            style={{ loginStyle }}
-          />
-          <input className="login-password"
-            type="password"
-            id="password"          
-            name="password"
-            autoComplete="true"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={{ loginStyle }}
-          />
-          <button type="submit" style={{ padding: "10px 20px", borderRadius: "5px", cursor: "pointer" }}>
-            Login
-          </button>
-        </form>
-      </div>
-    </CookiesProvider>
+    <div>
+     <NavBar />
+      <form className="login-container" onSubmit={handleSubmit}>
+      <h2>Login</h2>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
+          required
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          required
+        />
+        <button type="submit" disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
+        </button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        <p>
+        New user? <Link to="/signup">Sign up here</Link>
+      </p>
+      </form>  
+      <Footer/>
+    </div>
   );
 };
-
 export default Login;
