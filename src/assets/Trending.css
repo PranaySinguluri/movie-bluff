@@ -4,6 +4,7 @@
     background: white;
     text-align: left;
     border-radius: 10px;
+    display: contents;
   }
   
   /* Title styling */
@@ -17,7 +18,7 @@
   /* Scrollable movie grid (right to left) */
   .trending-movie-grid {
     display: flex;
-    flex-direction: row; /* Right-to-left scrolling */
+    flex-direction: row; 
     gap: 15px;
     padding: 15px;
     overflow-x: auto;
@@ -30,7 +31,7 @@
   
   /* Hide scrollbar */
   .trending-movie-grid::-webkit-scrollbar {
-    display:block;
+    display:flex;
   }
   
   /* Movie card styling */
@@ -59,9 +60,9 @@
   
   /* Movie title */
   .trending-movie-title {
-    font-size: 18px;
+  
+    font-size: 5px;
     color: #222;
-    font-weight: bold;
     margin-top: 10px;
   }
   

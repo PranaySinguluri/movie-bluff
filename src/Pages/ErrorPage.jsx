@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Footer from "../Components /Footer";
+import Footer from "../Components/Footer";
+import NavBar from "Components/NavBar";
 
 function ErrorPage() {
   useEffect(() => {
@@ -11,6 +12,7 @@ function ErrorPage() {
 
   return (
     <div style={{ textAlign: "center", padding: "50px" }}>
+      <NavBar />
       <h1>404 Error</h1>
       <p>Page not found</p>
       <p> Go back to 

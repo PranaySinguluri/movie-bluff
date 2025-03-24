@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 .App {
   text-align: center;
 }
@@ -12,7 +14,7 @@
   max-width: 400px;
   margin: auto;
   text-align: center;
-  padding: 20px;
+  padding: 40px;
   background: #f8f8f8;
   border-radius: 10px;
 }
@@ -132,7 +134,7 @@ button:hover {
   align-items: center;
 }
 
-/* Movie Grid - Responsive Layout */
+
 .movie-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -198,6 +200,13 @@ button:hover {
   padding-top: 20px;
   padding-bottom: 20px;
 
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
 }
 
 .movie-card {
