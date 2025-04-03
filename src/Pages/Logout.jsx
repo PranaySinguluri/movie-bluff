@@ -1,23 +1,33 @@
-// src/pages/Logout.jsx
-import  { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
-import useAuth from "../Hooks/UseAuth"; // Ensure this path is correct
-// import NavBar from "Components/NavBar";
+// import { useEffect, useRef } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { useCookies } from "react-cookie";
+// import useAuth from "../Hooks/UseAuth";
 
-const Logout = () => {
-  const navigate = useNavigate();
-  const [, , removeCookie] = useCookies(["user"]); // Function to remove the "user" cookie
-  const { logout } = useAuth(); // Logout function from the auth hook
+// const Logout = () => {
+//   const navigate = useNavigate();
+//   const [, , removeCookie] = useCookies(["user"]);
+//   const { logout } = useAuth();
+//   const timeoutRef = useRef(null); 
 
-  useEffect(() => {
-    // Perform logout actions
-    logout(); // Call the auth hook logout
-    removeCookie("user", { path: "/" }); // Remove user cookie
-    navigate("/login"); // Redirect to login page
-  }, [logout, removeCookie, navigate]);  
-
-
-};
-
-export default Logout;
+//   const handleLogout = () => {
+//     logout(); 
+//     removeCookie("user", { path: "/" });
+//     navigate("/home");
+//   };
+  
+//     // useEffect(() => {
+//     //   timeoutRef.current = setTimeout(() => {
+//     //     logout();
+//     //     removeCookie("user", { path: "/" });
+//     //     navigate("/login");
+//     //   }, 5 * 60 * 1000); // 5 minutes inactivity
+  
+//     //   return () => clearTimeout(timeoutRef.current); // Cleanup
+//     // }, [logout, removeCookie, navigate]); // ✅ No ESLint warning
+  
+//     return {
+//       handleLogout,
+//     };
+//   };
+  
+//   export default Logout;

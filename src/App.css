@@ -9,7 +9,6 @@
   pointer-events: none;
 }
 
-
 .signup-container {
   max-width: 400px;
   margin: auto;
@@ -43,7 +42,7 @@ input {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
-  border: 1px solid #ccc;
+  border: 1px solid #040404;
   border-radius: 5px;
 }
 
@@ -149,11 +148,14 @@ button:hover {
   background: white;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  /* overflow: hidden; */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
   padding: 15px;
+  padding-bottom: 90px;
   cursor: pointer;
+  min-width: fit-content; 
+  min-height: fit-content;
 }
 
 .movie-card:hover {
@@ -199,7 +201,6 @@ button:hover {
   height: auto;
   padding-top: 20px;
   padding-bottom: 20px;
-
 }
 
 .loading-container {
@@ -214,6 +215,7 @@ button:hover {
   border-radius: 10px;
   overflow: hidden;
   background-color: white;
+  padding-bottom: 20px;
 }
 
 .movie-card:hover {
@@ -221,6 +223,7 @@ button:hover {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   border-color: #444;
 }
+
 
 @keyframes App-logo-spin {
   from {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { VscHome } from "react-icons/vsc";
 import "/Users/pranaysinguluri/movie-bluff/src/assets/NavBar.css"; // Import the separate CSS file
+import { Nav } from "react-bootstrap";
 
 const NavBar = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -11,7 +12,7 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav className="navbar">
+    <Nav className="navbar">
       <div className="logo">
         <Link to="/home" className="link-bold">
           Movie Bluff
@@ -39,7 +40,7 @@ const NavBar = () => {
           </Link>
         )}
       </div>
-    </nav>
+    </Nav>
   );
 };
 
