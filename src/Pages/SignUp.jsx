@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import useAuth from "/Users/pranaysinguluri/movie-bluff/src/Hooks/UseAuth.jsx";
-import NavBar from "Components/NavBar";
-import {Link} from "react-router-dom"
-
+import NavBar from "../Components/NavBar";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -10,11 +9,37 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { signup, loading } = useAuth();
-  
+
+  const validateEmail = (email) => {
+    return /\S+@\S+\.\S+/.test(email); // Basic email regex
+  };
+
+  const validateUsername = (username) => {
+    return /^[a-zA-Z0-9_]{3,15}$/.test(username); // Only letters, numbers, and underscores, 3-15 chars
+  };
+
+  const validatePassword = (password) => {
+    return password.length >= 6; // At least 6 characters
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+
+    if (!validateEmail(email)) {
+      setError("Invalid email format");
+      return;
+    }
+
+    if (!validateUsername(username)) {
+      setError("Username must be 3-15 characters long and contain only letters, numbers, or underscores.");
+      return;
+    }
+
+    if (!validatePassword(password)) {
+      setError("Password must be at least 6 characters long.");
+      return;
+    }
 
     try {
       await signup(email, username, password);
@@ -25,11 +50,11 @@ const SignUp = () => {
 
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <form className="signup-container" onSubmit={handleSubmit}>
-      <h2>Sign Up</h2>
-        <input 
-        id="userEmail"
+        <h2>Sign Up</h2>
+        <input
+          id="userEmail"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -54,11 +79,11 @@ const SignUp = () => {
           {loading ? "Signing Up..." : "Sign Up"}
         </button>
         <p>
-          Already have an account?{" "}
-        <Link to="/login">Login here</Link>
-      </p>
+          Already have an account? <Link to="/login">Login here</Link>
+        </p>
+        {error && <p style={{ color: "red", alignItems: "center"}}>{error}</p>}
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      
     </div>
   );
 };

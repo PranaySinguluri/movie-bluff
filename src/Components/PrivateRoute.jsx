@@ -9,7 +9,6 @@ const PrivateRoute = ({ element, ...rest }) => {
   if (!accessToken) {
     return <Navigate to="/login" />;
   }
-
   return <Route {...rest} element={element} />;
 };
 

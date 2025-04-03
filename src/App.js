@@ -9,16 +9,16 @@ import { Routes, Route} from "react-router-dom";
 import Homly from "/Users/pranaysinguluri/movie-bluff/src/Pages/Homly.jsx";
 import Login from "/Users/pranaysinguluri/movie-bluff/src/Pages/Login.jsx";
 import SignUp from "/Users/pranaysinguluri/movie-bluff/src/Pages/SignUp.jsx";
-import About from "Pages/About";
-import Plot from "Pages/Plot";
+import About from "/Users/pranaysinguluri/movie-bluff/src/Pages/About.jsx";
+import Plot from "/Users/pranaysinguluri/movie-bluff/src/Pages/Plot.jsx";
 //import Home from "/Users/pranaysinguluri/movie-bluff/src/Pages/Homly.jsx";
-import ErrorPage from "Pages/ErrorPage";
+import ErrorPage from "/Users/pranaysinguluri/movie-bluff/src/Pages/ErrorPage.jsx";
 import Profile from "/Users/pranaysinguluri/movie-bluff/src/Pages/Profile.jsx";
-
-
+// import {Logout }from "/Users/pranaysinguluri/movie-bluff/src/Pages/Logout.jsx";
 
 function App() {
   return (
+    // <Logout>
     <Routes>
       <Route path="*" element={<Homly />} />
       <Route path="/home/*" element={<Homly />} />
@@ -29,6 +29,7 @@ function App() {
       <Route path="/profile" element={<Profile/>}/>
       <Route path="/*" element={<ErrorPage />} /> 
     </Routes>
+   // </Logout> */
   );
 }
 

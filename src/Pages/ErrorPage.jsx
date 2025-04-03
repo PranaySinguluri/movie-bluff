@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../Components/Footer";
-import NavBar from "Components/NavBar";
+import NavBar from "../Components/NavBar";
 
 function ErrorPage() {
   useEffect(() => {

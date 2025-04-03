@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../Components/NavBar";
 
+
 const Profile = () => {
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -13,7 +14,7 @@ const Profile = () => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
     if (!authStatus) {
-      navigate("/login"); // Redirect to login if not authenticated
+      navigate("/home"); // Redirect to login if not authenticated
     } else {
       setIsAuthenticated(true);
       setUserName(currentUser?.username || "Guest");
@@ -33,19 +34,16 @@ const Profile = () => {
     setUserName("Guest");
     setUserEmail("No Email");
     alert("Your account has been deleted successfully.");
-    navigate("/home");
+    navigate("/login");
   };
   
-  
-  
-
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
     localStorage.removeItem("currentUser"); 
     setIsAuthenticated(false);
     setUserName("Guest");
     setUserEmail("No Email");
-    navigate("/login"); 
+    navigate("/home"); 
   };
 
   return (
