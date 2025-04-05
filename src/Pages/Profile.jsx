@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../Components/NavBar";
+import { CgProfile } from "react-icons/cg";
 
 
 const Profile = () => {
@@ -50,6 +51,7 @@ const Profile = () => {
     <div>
       <NavBar />
       <div  style={styles.profileContainer}>
+      <CgProfile />
         <h2>User Profile</h2>
         <div style={styles.profileInfo}>
           <label>Email: {userEmail}</label>
