@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../Hooks/useFetch"; // Correct relative path
-import "/Users/pranaysinguluri/movie-bluff/src/assets/Trending.css"; // Import the new CSS file
+import "../assets/Trending.css"; // Import the new CSS file
 
 const BASE_URL = "https://api.themoviedb.org/3/trending/movie/day";
 

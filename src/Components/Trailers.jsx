@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../Hooks/useFetch"; // ✅ Import the custom hook
-import "/Users/pranaysinguluri/movie-bluff/src/assets/Trending.css"; // ✅ Import styles
+import "../assets/Trending.css"; // ✅ Import styles
 
  const url = "https://api.themoviedb.org/3/movie/upcoming";
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { VscHome } from "react-icons/vsc";
-import "/Users/pranaysinguluri/movie-bluff/src/assets/NavBar.css"; // Import the separate CSS file
+import "../assets/NavBar.css"; // Import the separate CSS file
 import { Nav } from "react-bootstrap";
 import { CgProfile } from "react-icons/cg";
 import { BiSolidMoviePlay } from "react-icons/bi";

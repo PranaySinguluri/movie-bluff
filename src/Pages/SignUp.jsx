@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useAuth from "/Users/pranaysinguluri/movie-bluff/src/Hooks/UseAuth.jsx";
+import useAuth from "../Hooks/UseAuth.jsx";
 import NavBar from "../Components/NavBar";
 import { Link } from "react-router-dom";
 

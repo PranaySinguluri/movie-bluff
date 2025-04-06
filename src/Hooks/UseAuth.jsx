@@ -6,10 +6,19 @@ const useAuth = () => {
   const navigate = useNavigate();
   const timerDuration = 120000; // 2 minutes
   let logoutTimer = null;
+  
+  const logout = () => {
+    localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("currentUser");
+    removeActivityListener();
+    alert("Logged out due to inactivity.");
+    navigate("/login");
+  };
 
   const resetTimer = () => {
     if (logoutTimer) {
       clearTimeout(logoutTimer);
+      
     }
     logoutTimer = setTimeout(() => {
       logout();
@@ -53,7 +62,6 @@ const useAuth = () => {
       const users = JSON.parse(localStorage.getItem("users")) || [];
       const user = users.find((u) => u.username === username && u.password === password);
       if (!user) throw new Error("Invalid username or password");
-
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("currentUser", JSON.stringify(user));
       navigate("/home");
@@ -65,13 +73,6 @@ const useAuth = () => {
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem("isAuthenticated");
-    localStorage.removeItem("currentUser");
-    removeActivityListener();
-    alert("Logged out due to inactivity.");
-    navigate("/login");
-  };
 
   const isAuthenticated = () => localStorage.getItem("isAuthenticated") === "true";
 
