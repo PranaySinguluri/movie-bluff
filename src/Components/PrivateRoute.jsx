@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Route, Navigate } from "react-router-dom";
-import { getAccessToken } from "/Users/pranaysinguluri/movie-bluff/src/Utilities/token.jsx";
+import { getAccessToken } from "../Utilities/token.jsx";
 
 const PrivateRoute = ({ element, ...rest }) => {
   const accessToken = getAccessToken();

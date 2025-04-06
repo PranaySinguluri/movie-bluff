@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"; // ✅ Corrected import
 import useAuth from "/Users/pranaysinguluri/movie-bluff/src/Hooks/UseAuth.jsx"; // ✅ Fixed import path
 import NavBar from "../Components/NavBar"; // ✅ Fixed import path
 import { Link } from "react-router-dom"; // ✅ Corrected import for Link
-import Footer from "/Users/pranaysinguluri/movie-bluff/src/Components/Footer.jsx";
+import Footer from "../Components/Footer.jsx";
 
 
 const Login = () => {

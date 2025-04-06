@@ -1,5 +1,5 @@
 import React from 'react';
-import '/Users/pranaysinguluri/movie-bluff/src/App.css';
+import '../App.css';
 
 const Footer = () => {
     return (
