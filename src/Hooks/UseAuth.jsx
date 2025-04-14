@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const useAuth = () => {
   const [loading, setLoading] = useState(false);
+  const [role, setRole] = useState("admin");
+
   const navigate = useNavigate();
   const timerDuration = 120000; // 2 minutes
   let logoutTimer = null;
@@ -18,7 +21,6 @@ const useAuth = () => {
   const resetTimer = () => {
     if (logoutTimer) {
       clearTimeout(logoutTimer);
-      
     }
     logoutTimer = setTimeout(() => {
       logout();
@@ -44,7 +46,7 @@ const useAuth = () => {
       if (users.find((user) => user.username === username)) {
         throw new Error("Username already taken");
       }
-      const newUser = { email, username, password };
+      const newUser = { email, username, password, role: "user" };
       users.push(newUser);
       localStorage.setItem("users", JSON.stringify(users));
       alert("Signup successful! You can now log in.");
@@ -64,6 +66,7 @@ const useAuth = () => {
       if (!user) throw new Error("Invalid username or password");
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("currentUser", JSON.stringify(user));
+      setRole(user.role ==="Admin");
       navigate("/home");
       startActivityListener();
     } catch (err) {
@@ -83,7 +86,7 @@ const useAuth = () => {
     return () => removeActivityListener();
   },); // Only include isAuthenticated here since startActivityListener and removeActivityListener are stable functions
 
-  return { signup, login, logout, loading, isAuthenticated };
+  return { signup, login, logout, loading, role, isAuthenticated };
 };
 
 export default useAuth;
