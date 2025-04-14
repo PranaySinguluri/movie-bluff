@@ -8,7 +8,8 @@ const About = () => {
   <>
       <NavBar />
       <div style={{ 
-        minHeight: "calc(100vh - 80px)",
+        height: "100vh",
+        width: "100vw",
         display: "flex", 
         flexDirection: "column", 
         justifyContent: "center", 
