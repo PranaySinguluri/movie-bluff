@@ -13,16 +13,17 @@ function Admin({ homePath = "/home" }) {
   useEffect(() => {
     try {
       const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-      if (currentUser.role === "admin") {
-        const allUsers = JSON.parse(localStorage.getItem("users")) || [];
-        const usersWithRoles = allUsers.map((user) => ({
-          ...user,
-          role: user.role === "admin" ? "admin" : "user",
-        }));
-        setUsers(usersWithRoles);
-      } else {
+      if (currentUser?.role !== "admin") {
         navigate(homePath);
+        return;
       }
+
+      const allUsers = JSON.parse(localStorage.getItem("users")) || [];
+      const usersWithRoles = allUsers.map((user) => ({
+        ...user,
+        role: user.role === "admin" ? "admin" : "user",
+      }));
+      setUsers(usersWithRoles);
     } catch (error) {
       console.error("Error accessing localStorage:", error);
       navigate(homePath);
@@ -89,8 +90,8 @@ function Admin({ homePath = "/home" }) {
                 <td>
                   <input
                     type="checkbox"
-                    checked={user.role === "admin"}
-                    disabled={user.role === "admin"} // Prevent changing admin's role
+                    checked={user.role === "admin" || false} // Ensure checked is always boolean
+                    disabled={user.username === "admin"} // Disable only for admin user
                     onChange={() => handleRoleChange(index)}
                     className="form-check-input"
                   />
