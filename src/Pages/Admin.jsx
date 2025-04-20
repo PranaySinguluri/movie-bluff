@@ -7,6 +7,7 @@ import "../assets/AdminPage.css";
 
 function Admin({ homePath = "/home" }) {
   const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
   const navigate = useNavigate();
 
   // Load users and check admin access
@@ -18,14 +19,22 @@ function Admin({ homePath = "/home" }) {
         return;
       }
 
-      const allUsers = JSON.parse(localStorage.getItem("users")) || [];
-      const usersWithRoles = allUsers.map((user) => ({
-        ...user,
-        role: user.role === "admin" ? "admin" : "user",
-      }));
+      const rawUsers = JSON.parse(localStorage.getItem("users")) || [];
+      // Validate and map users, ensuring role is defined
+      const usersWithRoles = Array.isArray(rawUsers)
+        ? rawUsers
+            .filter((user) => user && typeof user === "object" && user.email && user.username) // Filter invalid users
+            .map((user) => ({
+              ...user,
+              role: user.role === "admin" ? "admin" : "user", // Default to "user" if role is undefined
+            }))
+        : [];
       setUsers(usersWithRoles);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error accessing localStorage:", error);
+      setUsers([]);
+      setIsLoading(false);
       navigate(homePath);
     }
   }, [navigate, homePath]);
@@ -73,49 +82,57 @@ function Admin({ homePath = "/home" }) {
           <h4>Manage Users and their Roles</h4>
           <p>You can change user roles and delete users from here.</p>
         </div>
-        <table className="admin-table">
-          <thead className="admin-table-header">
-            <tr className="admin-table-row">
-              <th>Email</th>
-              <th>Username</th>
-              <th>Admin</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user, index) => (
-              <tr key={user.email || `user-${index}`} className="admin-table-row">
-                <td>{user.email}</td>
-                <td>{user.username}</td>
-                <td>
-                  <input
-                    type="checkbox"
-                    checked={user.role === "admin" || false} // Ensure checked is always boolean
-                    disabled={user.username === "admin"} // Disable only for admin user
-                    onChange={() => handleRoleChange(index)}
-                    className="form-check-input"
-                  />
-                </td>
-                <td>
-                  <Button
-                    variant="danger"
-                    size="sm"
-                    className="delete-button"
-                    onClick={() => handleDelete(index)}
-                    disabled={user.username === "admin"} // Prevent deleting admin
-                  >
-                    Delete
-                  </Button>
-                </td>
+        {isLoading ? (
+          <p>Loading users...</p>
+        ) : users.length === 0 ? (
+          <p>No users found.</p>
+        ) : (
+          <table className="admin-table">
+            <thead className="admin-table-header">
+              <tr className="admin-table-row">
+                <th>Email</th>
+                <th>Username</th>
+                <th>Admin</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        <div className="save-button-container">
-          <Button className="save-button" onClick={handleSave}>
-            Save All Changes
-          </Button>
-        </div>
+            </thead>
+            <tbody>
+              {users.map((user, index) => (
+                <tr key={user.email || `user-${index}`} className="admin-table-row">
+                  <td>{user.email}</td>
+                  <td>{user.username}</td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      checked={user.role === "admin"} // Simplified, as role is guaranteed to be "admin" or "user"
+                      disabled={user.username === "admin"}
+                      onChange={() => handleRoleChange(index)}
+                      className="form-check-input"
+                    />
+                  </td>
+                  <td>
+                    <Button
+                      variant="danger"
+                      size="sm"
+                      className="delete-button"
+                      onClick={() => handleDelete(index)}
+                      disabled={user.username === "admin"}
+                    >
+                      Delete
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        {!isLoading && users.length > 0 && (
+          <div className="save-button-container">
+            <Button className="save-button" onClick={handleSave}>
+              Save All Changes
+            </Button>
+          </div>
+        )}
       </div>
       <Footer />
     </>

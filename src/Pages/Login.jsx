@@ -5,7 +5,7 @@ import NavBar from "../Components/NavBar";
 import Footer from "../Components/Footer.jsx";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-const Login = () => {
+const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [type, setType] = useState("password");
@@ -16,24 +16,6 @@ const Login = () => {
   const handleToggle = () => {
     setType(type === "password" ? "text" : "password");
   };
-
-  // useEffect(() => {
-  //   try {
-  //     const isAuthenticated = localStorage.getItem("isAuthenticated");
-  //     const currentUser = localStorage.getItem("currentUser");
-  //     if (isAuthenticated && currentUser) {
-  //       const user = JSON.parse(currentUser);
-  //       console.log("User is already logged in:", user);
-  //       if (user.username === "admin") {
-  //         navigate("/admin");
-  //       } else {
-  //         navigate("/home");
-  //       }
-  //     }
-  //   } catch (error) {
-  //     console.error("Error checking authentication:", error);
-  //   }
-  // }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

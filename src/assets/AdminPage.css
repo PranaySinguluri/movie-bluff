@@ -31,6 +31,28 @@
   border-radius: 0.25rem;
   overflow: hidden;
 }
+/* ../assets/AdminPage.css */
+
+/* Override Bootstrap form-check-input for red checkbox */
+.form-check-input {
+  /* Default (unchecked) appearance */
+  border: 2px solid #dc3545; /* Red border */
+  background-color: #fff; /* White background when unchecked */
+}
+
+/* Checked state */
+.form-check-input:checked {
+  background-color: #dc3545; /* Red background when checked */
+  border-color: #dc3545; /* Red border */
+  accent-color: #dc3545; /* Red fill for modern browsers */
+}
+
+/* Disabled state */
+.form-check-input:disabled {
+  background-color: #f8d7da; /* Light red background for disabled */
+  border-color: #dc3545; /* Red border */
+  opacity: 0.6; /* Slightly faded */
+}
 
 .admin-table-header {
   background-color: #f8f9fa;
@@ -75,7 +97,7 @@
 .save-button {
   margin-top: 20px;
   background-color: black;
-  border-color: #007bff;
+  border-color: red;
   padding: 10px 20px;
   font-size: 1rem;
   font-weight: bold;
@@ -84,7 +106,7 @@
 }
 
 .save-button:hover {
-  background-color: red;
+  background-color: rgb(255, 0, 0);
 }
 
 .save-button-container {

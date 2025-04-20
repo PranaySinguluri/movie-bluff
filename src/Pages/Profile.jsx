@@ -10,6 +10,7 @@ const Profile = () => {
   const [role, setRole] = useState("user");
   const [userEmail, setUserEmail] = useState("No Email");
   const [isDeleting, setIsDeleting] = useState(false);
+  
 
   useEffect(() => {
     try {
