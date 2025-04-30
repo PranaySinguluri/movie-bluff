@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../Components/NavBar";
 import Footer from "../Components/Footer";
+import "../assets/Profile.css"; // Assuming you have a CSS file for styling
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -11,7 +12,6 @@ const Profile = () => {
   const [userEmail, setUserEmail] = useState("No Email");
   const [isDeleting, setIsDeleting] = useState(false);
   
-
   useEffect(() => {
     try {
       const authStatus = localStorage.getItem("isAuthenticated") === "true";
@@ -28,9 +28,9 @@ const Profile = () => {
         localStorage.setItem("currentUser", JSON.stringify(currentUser));
       }
 
-      setUserName(currentUser.username || "Unknown");
-      setRole(currentUser.role || "user");
-      setUserEmail(currentUser.email || "No Email");
+      setUserName(currentUser.username);
+      setRole(currentUser.role);
+      setUserEmail(currentUser.email);
       setIsAuthenticated(true);
     } catch (error) {
       console.error("Error reading localStorage:", error);
@@ -81,33 +81,32 @@ const Profile = () => {
   return (
     <div>
       <NavBar />
-      <div style={styles.profileContainer}>
+      <div className="profileContainer">
         <h2>User Profile</h2>
-        <div style={styles.profileImage}>
+        <div className="profileImage">
           <img
-            style={styles.img}
+            className="profileImage"
             src="https://picsum.photos/200/300"
             alt="Profile"
           />
         </div>
-        <div style={styles.profileInfo}>
+        <div className="profileInfo">
           <label>Email: {userEmail}</label>
-          <br />
           <label>User Name: {userName}</label>
           <br />
         </div>
         {isAuthenticated ? (
           <>
-            <button style={styles.logoutButton} onClick={handleLogout}>
+            <button className="logoutButton" onClick={handleLogout}>
               Logout
             </button>
             {role === "admin" && (
-              <button style={styles.adminButton} onClick={handleAdmin}>
+              <button className="adminButton" onClick={handleAdmin}>
                 Admin
               </button>
             )}
             <button
-              style={styles.deleteButton}
+              className="adminButton"
               onClick={handleDelete}
               disabled={isDeleting}
             >
@@ -115,7 +114,7 @@ const Profile = () => {
             </button>
           </>
         ) : (
-          <button style={styles.loginButton} onClick={() => navigate("/login")}>
+          <button className="loginButton" onClick={() => navigate("/login")}>
             Login
           </button>
         )}
@@ -123,64 +122,6 @@ const Profile = () => {
       <Footer />
     </div>
   );
-};
-
-const styles = {
-  profileContainer: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: "20px",
-  },
-  profileImage: {
-    marginBottom: "20px",
-  },
-  img: {
-    borderRadius: "50%",
-    width: "150px",
-    height: "150px",
-  },
-  profileInfo: {
-    textAlign: "center",
-    marginBottom: "20px",
-  },
-  logoutButton: {
-    marginTop: "10px",
-    backgroundColor: "#007bff",
-    color: "#fff",
-    border: "none",
-    padding: "10px 20px",
-    borderRadius: "5px",
-    cursor: "pointer",
-  },
-  adminButton: {
-    marginTop: "10px",
-    backgroundColor: "#28a745",
-    color: "#fff",
-    border: "none",
-    padding: "10px 20px",
-    borderRadius: "5px",
-    cursor: "pointer",
-  },
-  deleteButton: {
-    marginTop: "10px",
-    backgroundColor: "#dc3545",
-    color: "#fff",
-    border: "none",
-    padding: "10px 20px",
-    borderRadius: "5px",
-    cursor: "pointer",
-  },
-  loginButton: {
-    marginTop: "10px",
-    backgroundColor: "#007bff",
-    color: "#fff",
-    border: "none",
-    padding: "10px 20px",
-    borderRadius: "5px",
-    cursor: "pointer",
-  },
 };
 
 export default Profile;

@@ -1,0 +1,223 @@
+/* Home.css (Minimalistic Light Theme) */
+
+/* Root container */
+.min-h-screen {
+    background-color: #ffffff; /* Pure white background */
+    color: #333333; /* Dark gray text */
+    font-family: "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  /* Welcome heading */
+  .welcome-heading {
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #333333;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  
+  .welcome-heading:hover {
+    color: #0288d1; /* Blue accent */
+  }
+  
+  /* Search wrapper */
+  .wrapper-search {
+    padding: 0 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Loading state */
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+  }
+  
+  .loading-container img {
+    width: 200px;
+    height: auto;
+  }
+  
+  /* Error message */
+  .error-message {
+    color: #d32f2f; /* Red for errors */
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+  
+  /* Search results text */
+  .search-results {
+    color: #666666; /* Medium gray */
+    font-size: 1rem;
+    text-align: center;
+    padding: 0.5rem;
+    font-weight: 400;
+  }
+  
+  /* No results found */
+  .no-results {
+    color: #333333;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 1rem;
+    font-weight: 400;
+  }
+  
+  /* Movie grid */
+  .movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Movie card */
+  .movie-card {
+    background-color: #f8f8f8; /* Very light gray */
+    border: 1px solid #e0e0e0; /* Subtle border */
+    border-radius: 4px;
+    padding: 1rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .movie-card:hover {
+    background-color: #f0f0f0; /* Slightly darker on hover */
+  }
+  
+  .movie-card h2 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #333333;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  
+  .movie-card .subtitle {
+    color: #999999; /* Light gray */
+    font-size: 0.875rem;
+  }
+  
+  .movie-card .release-year,
+  .movie-card .language {
+    color: #666666;
+    font-size: 0.875rem;
+    margin: 0.25rem 0;
+  }
+  
+  .movie-card .rating {
+    color: #0288d1; /* Blue for ratings */
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .movie-card .star-icon {
+    margin-right: 0.25rem;
+  }
+  
+  .movie-poster {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    object-fit: cover;
+  }
+  
+  /* Single movie info */
+  .single-movie-info {
+    background-color: #f8f8f8;
+    color: #333333;
+    padding: 1.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    max-width: 600px;
+    margin: 1.5rem auto;
+  }
+  
+  .single-movie-info h2 {
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: #333333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .single-movie-info p {
+    font-size: 1rem;
+    color: #666666;
+    margin: 0.25rem 0;
+  }
+  
+  .single-movie-info .movie-poster {
+    margin-top: 1rem;
+  }
+  
+  /* Scroll to top button */
+  .scroll-top-button {
+    position: fixed;
+    bottom: 4rem;
+    right: 1rem;
+    background-color: #0288d1;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 0.75rem;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .scroll-top-button:hover {
+    background-color: #01579b; /* Darker blue */
+  }
+  
+  .scroll-top-button svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .welcome-heading {
+      font-size: 1.75rem;
+    }
+  
+    .movie-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      padding: 0.75rem;
+    }
+  
+    .movie-card {
+      padding: 0.75rem;
+    }
+  
+    .movie-card h2 {
+      font-size: 1.1rem;
+    }
+  
+    .single-movie-info {
+      padding: 1rem;
+      margin: 1rem;
+    }
+  
+    .scroll-top-button {
+      bottom: 3rem;
+      right: 0.75rem;
+      padding: 0.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .movie-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .welcome-heading {
+      font-size: 1.5rem;
+    }
+  }
