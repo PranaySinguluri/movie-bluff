@@ -1,5 +1,5 @@
 /* Main container */
-.trending-container {
+.trailer-container {
     padding: 40px;
     background: white;
     text-align: left;
@@ -8,7 +8,7 @@
   }
   
   /* Title styling */
-  .trending-title {
+  .trailer-title {
     font-size: 20px;
     padding-left: 20px;
     color: #222;
@@ -17,7 +17,7 @@
   }
   
   /* Scrollable movie grid (right to left) */
-  .trending-movie-grid {
+  .trailer-movie-grid {
     display: flex;
     flex-direction: row; 
     gap: 15px;
@@ -31,12 +31,12 @@
   }
   
   /* Hide scrollbar */
-  .trending-movie-grid::-webkit-scrollbar {
+  .trailer-movie-grid::-webkit-scrollbar {
     display:flex;
   }
   
   /* Movie card styling */
-  .trending-movie-card {
+  .trailer-movie-card {
     background: white;
     border-radius: 12px;
     padding: 15px;
@@ -47,13 +47,13 @@
   }
   
   /* Hover effect */
-  .trending-movie-card:hover {
+  .trailer-movie-card:hover {
     transform: scale(1.05);
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
   }
   
   /* Movie poster */
-  .trending-movie-image {
+  .trailer-movie-image {
     width: 100%;
     height: 320px;
     object-fit: cover;
@@ -61,7 +61,7 @@
   }
   
  /* Movie title */
-.trending-movie-title {
+.trailer-movie-title {
   font-size: 18px;
   color: black;
   margin-top: 10px;
@@ -69,7 +69,7 @@
 }
 
 /* Enlarge only the title on hover */
-.trending-movie-card:hover {
+.trailer-movie-card:hover {
   transform: scale(1.05);
   font-size: 18px;
   font-weight: bold;
@@ -77,14 +77,14 @@
 
   
   /* Movie release year */
-  .trending-movie-year {
+  .trailer-movie-year {
     font-size: 14px;
     color: #777;
     margin-top: 5px;
   }
   
   /* Rating */
-  .trending-rating {
+  .trailer-rating {
     color: #2ecc71;
     font-weight: bold;
     font-size: 14px;
@@ -92,21 +92,21 @@
   }
   
   /* Popularity */
-  .trending-popularity {
+  .trailer-popularity {
     color: #ff5733;
     font-size: 14px;
     font-weight: bold;
   }
   
   /* Error message */
-  .trending-error {
+  .trailer-error {
     color: red;
     font-size: 16px;
     font-weight: bold;
   }
   
   /* Loading message */
-  .trending-loading {
+  .trailer-loading {
     font-size: 18px;
     font-weight: bold;
     color: blue;

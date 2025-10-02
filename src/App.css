@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 .App {
   text-align: center;
 }
@@ -7,12 +9,11 @@
   pointer-events: none;
 }
 
-
 .signup-container {
   max-width: 400px;
   margin: auto;
   text-align: center;
-  padding: 20px;
+  padding: 40px;
   background: #f8f8f8;
   border-radius: 10px;
 }
@@ -41,7 +42,7 @@ input {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
-  border: 1px solid #ccc;
+  border: 1px solid #040404;
   border-radius: 5px;
 }
 
@@ -132,12 +133,13 @@ button:hover {
   align-items: center;
 }
 
-/* Movie Grid - Responsive Layout */
 .movie-grid {
   display: grid;
+  
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
-  padding: 20px;
+  padding: 40px;
+  padding-bottom: 80px;
   background-color: #f8f8f8;
 }
 
@@ -147,11 +149,14 @@ button:hover {
   background: white;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* overflow: hidden; */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
   text-align: center;
   padding: 15px;
+  padding-bottom: 90px;
   cursor: pointer;
+  min-width: fit-content; 
+  min-height: fit-content;
 }
 
 .movie-card:hover {
@@ -197,7 +202,13 @@ button:hover {
   height: auto;
   padding-top: 20px;
   padding-bottom: 20px;
+}
 
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
 }
 
 .movie-card {
@@ -205,6 +216,7 @@ button:hover {
   border-radius: 10px;
   overflow: hidden;
   background-color: white;
+  padding-bottom: 20px;
 }
 
 .movie-card:hover {
@@ -212,6 +224,7 @@ button:hover {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   border-color: #444;
 }
+
 
 @keyframes App-logo-spin {
   from {

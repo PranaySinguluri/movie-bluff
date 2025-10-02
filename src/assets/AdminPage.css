@@ -1,0 +1,117 @@
+.admin-container {
+  padding: 1rem;
+}
+
+.admin-title {
+  text-align: center;
+  color: #343a40;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.admin-description {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.admin-description h4 {
+  color: #6c757d;
+}
+
+.admin-description p {
+  color: #6c757d;
+}
+
+.admin-table {
+  width: 60%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+/* ../assets/AdminPage.css */
+
+/* Override Bootstrap form-check-input for red checkbox */
+.form-check-input {
+  /* Default (unchecked) appearance */
+  border: 2px solid #dc3545; /* Red border */
+  background-color: #fff; /* White background when unchecked */
+}
+
+/* Checked state */
+.form-check-input:checked {
+  background-color: #dc3545; /* Red background when checked */
+  border-color: #dc3545; /* Red border */
+  accent-color: #dc3545; /* Red fill for modern browsers */
+}
+
+/* Disabled state */
+.form-check-input:disabled {
+  background-color: #f8d7da; /* Light red background for disabled */
+  border-color: #dc3545; /* Red border */
+  opacity: 0.6; /* Slightly faded */
+}
+
+.admin-table-header {
+  background-color: #f8f9fa;
+  color: #343a40;
+  font-weight: bold;
+  font-size: 1.25rem;
+  text-align: left;
+  border-bottom: 2px solid #dee2e6;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  font-style: normal;
+  letter-spacing: 0.1em;
+  border-radius: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.admin-table-row {
+  background-color: #ffffff;
+  color: #343a40;
+  font-size: 1rem;
+  text-align: left;
+  padding: 10px 20px;
+  border-bottom: 1px solid #dee2e6;
+  letter-spacing: 0.1em;
+}
+
+.admin-table-row th,
+.admin-table-row td {
+  padding: 10px 20px;
+}
+
+.delete-button {
+  padding-bottom: 20px;
+}
+
+.delete-button:hover {
+  background-color: red;
+}
+
+
+.save-button {
+  margin-top: 20px;
+  background-color: black;
+  border-color: red;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.save-button:hover {
+  background-color: rgb(255, 0, 0);
+}
+
+.save-button-container {
+  display: flex;
+  justify-content: center;
+  width: 60%;
+  margin: 20px auto 0;
+}

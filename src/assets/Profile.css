@@ -1,0 +1,119 @@
+/* Profile.css (Dark Theme) */
+
+/* General container styling */
+.profileContainer {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #1e1e1e; /* Dark background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: #e0e0e0; /* Light text color for contrast */
+  }
+  
+  /* Heading styling */
+  .profileContainer h2 {
+    font-size: 2rem;
+    color: #ffffff; /* White for emphasis */
+    margin-bottom: 20px;
+  }
+  
+  /* Profile image styling */
+  .profileImage {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 20px;
+    border: 3px solid #00bcd4; /* Cyan border for a vibrant touch */
+  }
+  
+  /* Profile info styling */
+  .profileInfo {
+    margin-bottom: 20px;
+  }
+  
+  .profileInfo label {
+    font-size: 1.1rem;
+    color: #b0b0b0; /* Light gray for secondary text */
+    display: block;
+    margin: 10px 0;
+  }
+  
+  /* Button styling */
+  .logoutButton,
+  .adminButton,
+  .loginButton {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  /* Logout button */
+  .logoutButton {
+    background-color: #d32f2f; /* Dark red */
+    color: #ffffff;
+  }
+  
+  .logoutButton:hover {
+    background-color: #b71c1c; /* Darker red on hover */
+    transform: translateY(-2px);
+  }
+  
+  /* Admin button */
+  .adminButton {
+    background-color: #0288d1; /* Dark blue */
+    color: #ffffff;
+  }
+  
+  .adminButton:hover {
+    background-color: #01579b; /* Darker blue on hover */
+    transform: translateY(-2px);
+  }
+  
+  /* Login button */
+  .loginButton {
+    background-color: #388e3c; /* Dark green */
+    color: #ffffff;
+  }
+  
+  .loginButton:hover {
+    background-color: #2e7d32; /* Darker green on hover */
+    transform: translateY(-2px);
+  }
+  
+  /* Disabled button state */
+  .adminButton:disabled {
+    background-color: #424242; /* Dark gray for disabled */
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .profileContainer {
+      margin: 20px;
+      padding: 15px;
+    }
+  
+    .profileImage {
+      width: 120px;
+      height: 120px;
+    }
+  
+    .profileContainer h2 {
+      font-size: 1.5rem;
+    }
+  
+    .logoutButton,
+    .adminButton,
+    .loginButton {
+      width: 100%;
+      margin: 5px 0;
+    }
+  }
