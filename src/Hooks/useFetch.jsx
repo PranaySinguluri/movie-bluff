@@ -11,6 +11,7 @@ function useFetch(url) {
   useEffect(() => {
     if (!url) return;
 
+    // debugger;
     const fetchData = async () => {
       setLoading(true);
       setError(null);
