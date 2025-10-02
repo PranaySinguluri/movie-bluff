@@ -4,7 +4,7 @@ import { VscHome } from "react-icons/vsc";
 import "../assets/NavBar.css"; // Import the separate CSS file
 import { Nav } from "react-bootstrap";
 import { CgProfile } from "react-icons/cg";
-import { BiSolidMoviePlay } from "react-icons/bi";
+// import { BiSolidMoviePlay } from "react-icons/bi";
 
 
 const NavBar = () => {
@@ -18,7 +18,8 @@ const NavBar = () => {
     <Nav className="navbar">
       <div className="logo">
         <Link to="/home" className="link-bold" onClick={() => window.scrollTo(0, 0)}>
-        <BiSolidMoviePlay size={20} /> <span/> Movie Bluff
+        {/* <BiSolidMoviePlay size={20} />*/}
+         <span/> Movie Bluff 
         </Link>
       </div>
       <div className="nav-links">

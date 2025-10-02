@@ -1,0 +1,68 @@
+/* TrustedBrandsComponent.css */
+.trusted-brands-container {
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.trusted-brands-title {
+  text-align: center;
+  font-size: 1.125rem; /* text-lg */
+  margin-bottom: 1rem;
+}
+
+.trusted-brands-logos {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.brand-card {
+  position: relative;
+  cursor: pointer;
+}
+
+.brand-hover-info {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.brand-card:hover .brand-hover-info {
+  opacity: 1;
+}
+
+.brand-info-box {
+  display: flex;
+  align-items: center;
+  background-color: #f3f4f6; /* gray-100 */
+  padding: 0.5rem;
+  border-radius: 9999px; /* fully rounded */
+}
+
+.brand-name {
+  margin-left: 0.5rem;
+  font-size: 0.875rem; /* text-sm */
+  color: #6b7280; /* gray-500 */
+}
+
+.brand-logo {
+  height: 10rem; /* h-40 */
+  width: 10rem;  /* w-40 */
+  object-fit: contain;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
